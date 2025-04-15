@@ -92,4 +92,21 @@ FROM nashville_housing;
 SELECT DISTINCT town
 FROM nashville_housing;
 ```
+The following SQL queries were developed to answer specific business questions: 
+
+1. What is the average sale price of properties by land use type? 
+```sql
+SELECT land_use, ROUND(AVG(sale_price), 2) AS avg_price 
+FROM nashville_housing 
+GROUP BY land_use
+ORDER by avg_price DESC; 
+```
+2. How many properties were sold each year?
+ ```sql
+SELECT YEAR(sale_date) AS sale_year, COUNT(*) AS properties_sold 
+FROM nashville_housing
+GROUP BY sale_year
+ORDER BY properties_sold DESC;
+```  
+
 
