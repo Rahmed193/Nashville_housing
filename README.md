@@ -43,3 +43,53 @@ CREATE TABLE nashville_housing (
     half_bath INT
     );
 ```
+
+### 2. Data Exploration & Cleaning 
+
+- **Record Count**: Determine the total number of records in the dataset.
+- **Property Count**: Find out how many properties have been sold.
+- **Category Count**:Identify all unique categories 
+- **Town Count**: Identify all unique towns in the dataset
+- **Null Value Check**: Check for any null values in the dataset and delete records with missing data.
+
+```sql
+-- Data Cleaning - You need to check if there are any NULL values in all the columns 
+
+SELECT * 
+FROM nashville_housing
+WHERE unique_id IS NULL OR parcel_id IS NULL OR land_use IS NULL
+OR property_address IS NULL OR town IS NULL OR sale_date IS NULL 
+OR sale_price IS NULL OR legal_reference IS NULL OR sold_vacant IS NULL
+OR owner_name IS NULL OR owner_address IS NULL OR acerage IS NULL
+OR tax_district IS NULL OR land_value IS NULL OR building_value IS NULL
+OR total_value IS NULL OR year_built IS NULL OR bedroom IS NULL
+OR full_bath IS NULL OR half_bath IS NULL; 
+
+-- Delete the NULL values
+DELETE FROM nashville_housing 
+WHERE unique_id IS NULL OR parcel_id IS NULL OR land_use IS NULL
+OR property_address IS NULL OR town IS NULL OR sale_date IS NULL 
+OR sale_price IS NULL OR legal_reference IS NULL OR sold_vacant IS NULL
+OR owner_name IS NULL OR owner_address IS NULL OR acerage IS NULL
+OR tax_district IS NULL OR land_value IS NULL OR building_value IS NULL
+OR total_value IS NULL OR year_built IS NULL OR bedroom IS NULL
+OR full_bath IS NULL OR half_bath IS NULL; 
+
+SELECT COUNT(*) FROM nashville_housing;
+
+-- No NULL VALUES 
+
+-- Data Exploration
+-- How many properties have been sold?
+SELECT COUNT(*)
+FROM nashville_housing; 
+
+-- What are the different categories of land use are there? 
+SELECT DISTINCT land_use
+FROM nashville_housing;
+
+-- What are the different cities these sales have happened in?
+SELECT DISTINCT town
+FROM nashville_housing;
+```
+
