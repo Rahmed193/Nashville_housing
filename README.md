@@ -108,5 +108,63 @@ FROM nashville_housing
 GROUP BY sale_year
 ORDER BY properties_sold DESC;
 ```  
-
-
+3. Which tax district has the highest average property value?
+```sql
+SELECT tax_district, ROUND(AVG(total_value),2) AS avg_total_value
+FROM nashville_housing
+GROUP BY tax_district
+ORDER BY avg_total_value DESC;
+```
+4. What is the average number of bedrooms and bathrooms by property type (land use)?
+```sql
+SELECT land_use, 
+	ROUND(AVG(bedroom),0) AS avg_bedrooms, 
+	ROUND(AVG(full_bath),0) AS avg_full_baths, 
+	ROUND(AVG(half_bath), 0) AS avg_half_baths
+FROM housing_sales 
+GROUP BY land_use;
+```
+5. Which properties have the highest building value? (Top 10)
+```sql
+SELECT property_address, land_use, town, building_value
+FROM nashville_housing
+ORDER BY building_value
+LIMIT 10;
+```
+6. Which addresses have the most property sales?
+```sql
+SELECT property_address, COUNT(*) AS sales_count
+FROM nashville_housing
+GROUP BY property_address
+ORDER BY sales_count DESC
+LIMIT 10;
+```
+7. what is the average age of properties sold (based on year built)?
+```sql
+SELECT ROUND(AVG(YEAR(CURDATE()) - year_built), 0) AS avg_property_age
+FROM nashville_housing
+WHERE year_built IS NOT NULL; 
+```
+8. Which property owners own the most properties in the dataset?
+```sql
+SELECT owner_name, COUNT(*) AS properties_owned
+FROM nashville_housing
+GROUP BY owner_name
+ORDER BY properties_owned DESC
+LIMIT 10;
+```
+9. Compare average land value vs. building value by number of bedrooms
+```sql
+SELECT bedroom, 
+	ROUND(AVG(land_value),2) AS avg_land_value,
+    ROUND(AVG(building_value),2) AS avg_building_value
+FROM nashville_housing
+GROUP BY bedroom
+ORDER BY bedroom DESC;
+```
+10. Which properties have land values greater than twice their building values and are over 0.5 acres in size?
+```sql
+FROM nashville_housing
+WHERE land_value > 2 * building_value AND acerage > 0.5
+ORDER BY land_value DESC;
+```
