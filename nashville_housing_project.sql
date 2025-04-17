@@ -156,7 +156,7 @@ SELECT land_use,
 	ROUND(AVG(bedroom),0) AS avg_bedrooms, 
 	ROUND(AVG(full_bath),0) AS avg_full_baths, 
 	ROUND(AVG(half_bath), 0) AS avg_half_baths
-FROM housing_sales 
+FROM nashville_housing
 GROUP BY land_use;
 
 -- Q5. Which properties have the highest building value? (Top 10)
