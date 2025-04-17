@@ -121,7 +121,7 @@ SELECT land_use,
 	ROUND(AVG(bedroom),0) AS avg_bedrooms, 
 	ROUND(AVG(full_bath),0) AS avg_full_baths, 
 	ROUND(AVG(half_bath), 0) AS avg_half_baths
-FROM housing_sales 
+FROM nashville_housing
 GROUP BY land_use;
 ```
 5. Which properties have the highest building value? (Top 10)
@@ -168,3 +168,9 @@ FROM nashville_housing
 WHERE land_value > 2 * building_value AND acerage > 0.5
 ORDER BY land_value DESC;
 ```
+
+##Findings 
+
+- Majority of properties were sold in 2013
+- Single Family houses have the highest building value
+- The buildings are fairly new with the average age being 62 years old. 
