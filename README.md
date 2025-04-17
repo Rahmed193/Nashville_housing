@@ -169,7 +169,7 @@ WHERE land_value > 2 * building_value AND acerage > 0.5
 ORDER BY land_value DESC;
 ```
 
-##Findings 
+## Findings 
 
 - Majority of properties were sold in 2013
 - Single Family houses have the highest building value
